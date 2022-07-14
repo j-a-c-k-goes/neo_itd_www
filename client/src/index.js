@@ -1,21 +1,12 @@
-// - - - built in module import - - -
-const fs = require('fs');
+const header = require("./js/header.js");
+const create_header = header.create_header();
 
-// - - - app defined modules - - -
-const projects = require('./js/project.js');
-const welcome = require('./js/welcome.js');
-const contact = require('./js/contact.js');
+const projects = require("./js/projects.js");
+const create_projects = projects.create_projects();
 
-// - - - export tests  - - -
+const contact = require("./js/contact.js");
+const create_contact = contact.create_contact();
 
-// - - - welcome module - - -
-welcome.load_message();
-welcome.build_module();
-
-// - - - project module - - -
-projects.load_message();
-projects.build_module();
-
-// - - - conctact module - - -
-contact.load_message();
-contact.build_module();
+console.info(create_header);
+console.info(create_projects);
+console.info(create_contact)

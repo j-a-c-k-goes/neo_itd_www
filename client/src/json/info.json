@@ -1,16 +1,7 @@
-{
-  "alias": [
-    "neo itd inc.",
-    "Neo Information, Technology and Design Incorporated",
-		"neo itd",
-  ],
-  "email": "xyz@neoitd.org",
-  "ein": "87-2444637",
-  "description": "an information technology and design venture for hyper function and utility.",
-  "people": [
-    {
-      "name": "jack a. lester",
-      "role": "design and applications engineer"
-    }
-  ]
-}
+[
+  { "alias": [ "neo itd inc.", "neo information technology and design incorporated", "neo itd" ] },
+  { "email": "xyz@neoitd.org" },
+  { "ein": "87-2444637" },
+  { "description": "information technology and design for hyper function and utility." },
+  {  "people": [ { "name": "jack a. lester", "role": "design and applications engineer" } ] }
+]

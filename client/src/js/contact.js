@@ -1,34 +1,35 @@
-// - - - built in module import - - -
-const fs = require('fs');
-const crypto = require('crypto');
+function create_contact () {
+	const date = new Date();
+	const data = require("../json/info.json");
+	const parent = document.createElement("footer");
+	
+	
+	const today = document.createElement("date");
+	const alias = document.createElement("h2");
+	const email = document.createElement("a")
+	const ein = document.createElement("p");
+	const desc = document.createElement("p");
+	const people = document.createElement("p");
 
-// - - - fetch required json file - - -
-const file = fs.readFileSync('./json/info.json');
+	today.innerHTML = `${date}`;
+	alias.innerHTML = data[0].alias[1];
+	email.href = `mailto:${data[1].email}`;
+	email.innerHTML = data[1].email;
+	ein.innerHTML = `ein: ${data[2].ein}`;
+	desc.innerHTML = `${data[3].description}`;
+	people.innerHTML = `currently @ neo: ${data[4].people[0].name}, ${data[4].people[0].role}`;
+	section_elements = [ alias, desc, today,  email, ein, people ];
 
-// - - - parse the file as an object - - -
-const parsed_file = JSON.parse(file);
-
-// - - - load message - - -
-const load_message = () => { console.log('- - - encrypt module - - -') };
-
-// - - - create hash function - - -
- const create_hash = (data) => { return crypto.createHash('sha256').update(data).digest('hex'); };
-
-// - - - module build - - -
-const build_module = () => {
-	const point_of_contact = `${parsed_file.people[0].role}, ${create_hash(parsed_file.people[0].name)}`;
-	console.log('- - - building module from data - - -');
-	console.log(`
-		${parsed_file.alias[0]}
-
-		email: ${ parsed_file.email }
-		ein: ${ create_hash(parsed_file.ein) }
-		point of contact: ${ point_of_contact }
-		
-		${ parsed_file.description[1] }
-		`);
-	// const div = document.createElement('div');
+	section_elements.forEach((element)=>{
+		const section = document.createElement("section");
+		section.appendChild(element);
+		parent.appendChild(section);
+	});
+	
+	
+	document.body.appendChild(parent);
+	
+	return parent;
 };
 
-// - - - module exports - - - 
-module.exports = { load_message, build_module, create_hash };
+module.exports = { create_contact };
